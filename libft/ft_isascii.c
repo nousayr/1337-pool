@@ -6,7 +6,7 @@
 /*   By: nodellao <nodellao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 19:01:09 by nodellao          #+#    #+#             */
-/*   Updated: 2026/10/12 19:02:54 by nodellao         ###   ########.fr       */
+/*   Updated: 2026/10/16 17:15:22 by nodellao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
 	{
-		return (0);
+		return (1);
 	}
-	return (1);
+	return (0);
 }

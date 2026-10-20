@@ -8,9 +8,17 @@ char *ft_strchr(const char *s, int c)
     {
         if (s[i] == (char)c)
         {
-            return (s + i);
+            return ((char *)(s + i));
         }
         i++;
     }
     return (NULL);
+}
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+    // printf("%s\n", ft_strchr("ab", '\0'));
+    char *str = strchr(NULL, '\0');
+    printf("%i", str[0]);
 }

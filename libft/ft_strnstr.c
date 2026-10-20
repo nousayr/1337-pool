@@ -1,6 +1,6 @@
 #include "libft.h"
 
-char *ft_strnstr(const char *haystack, const char *needle, size_t len)
+const char *ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
     size_t i = 0;
     size_t j = 0;
@@ -16,4 +16,12 @@ char *ft_strnstr(const char *haystack, const char *needle, size_t len)
         i++;
     }
     return (NULL);
+}
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+    printf("%s", ft_strnstr(NULL, "NULL", 0));
+    // printf("%s", strnstr(NULL, "NULL", 0));
+    // printf("%s", strnstr("hello", NULL, 5));
 }

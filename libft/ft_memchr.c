@@ -14,3 +14,12 @@ void *ft_memchr(const void *s, int c, size_t n)
     }
     return (NULL);
 }
+
+#include <stdio.h>
+int main()
+{
+    char str[5];
+    str[4] = '\0';
+    printf("%s\n", memchr(str, -1, 4));
+    // printf("%s\n", ft_memchr(str, -1, 4));
+}
