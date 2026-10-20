@@ -6,7 +6,7 @@
 /*   By: nodellao <nodellao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 16:30:20 by nodellao          #+#    #+#             */
-/*   Updated: 2026/08/25 16:30:34 by nodellao         ###   ########.fr       */
+/*   Updated: 2026/08/31 11:41:07 by nodellao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ int	ft_sqrt(int nb)
 	int	n;
 
 	n = 1;
+	if(nb < 0)
+	{
+		return (-1);
+	}
 	while (n * n <= nb)
 	{
 		if (n * n == nb)

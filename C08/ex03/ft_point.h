@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_point.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nodellao <nodellao@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/02 17:15:59 by nodellao          #+#    #+#             */
+/*   Updated: 2026/09/02 17:50:51 by nodellao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_POINT_H
 # define FT_POINT_H
 
-typedef struct set_point
+typedef struct ft_point
 {
-    int x;
-    int y;
-}               t_point;
+	int	x;
+	int	y;
+}	t_point;
 
 #endif
