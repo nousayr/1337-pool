@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nodellao <nodellao@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/25 23:12:22 by nodellao          #+#    #+#             */
+/*   Updated: 2026/10/25 23:12:38 by nodellao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void ft_lstiter(t_list *lst, void (*f)(void *))
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-    while (lst && f)
-    {
-        f(lst->content);
-        lst = lst->next;
-    }
+	while (lst && f)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }

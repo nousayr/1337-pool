@@ -1,48 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nodellao <nodellao@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/25 21:12:48 by nodellao          #+#    #+#             */
+/*   Updated: 2026/10/26 12:13:01 by nodellao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <unistd.h>
-#include <stdio.h>
-#include <stddef.h>
 
-void	*ft_memset(void *ptr, int x, size_t n)
+void	*ft_calloc(size_t count, size_t size)
 {
-	unsigned char	*p;
-	size_t i = 0;
+	char	*str;
+	size_t	len;
 
-	p = (unsigned char *)ptr;
-	i = 0;
-	while (i < n)
+	if ((count * size) / size != count)
 	{
-		p[i] = (unsigned char)x;
-		i++;
+		return (NULL);
 	}
-	return ((void *)ptr);
+	if (count == 0 || size == 0)
+	{
+		size = 1;
+		count = 1;
+	}
+	len = count * size;
+	str = malloc(len);
+	if (!str)
+		return (NULL);
+	return (ft_memset(str, 0, len));
 }
 
-void *ft_calloc(size_t count, size_t size)
-{
-    char *str;
-    size_t len;
-
-    if ((count * size) / size != count){
-        printf("hello world");
-        return (NULL);
-    }
-    if (count == 0 || size == 0)
-    {
-        size = 1;
-        count = 1;
-    }
-    len = count * size;
-    str = malloc(len);
-    if (!str)
-        return (NULL);
-    return (ft_memset(str, 0, len));
-}
-int main()
-{
-    int *str;
-
-    str = ft_calloc(1844674407370955161, 1844674407370955161);
-    // str = calloc(5, 4);
-    printf("%p", str);
-}
+// int main()
+// {
+//     char *str;
+//     str = ft_calloc(5, 1);
+//     // str = calloc(5, 1);
+//     printf("%p\n", str);
+//     printf("%i", str[43551]);
+//     printf("%s\n", str);
+// }

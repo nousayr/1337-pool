@@ -6,13 +6,13 @@
 /*   By: nodellao <nodellao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 19:02:59 by nodellao          #+#    #+#             */
-/*   Updated: 2026/10/12 19:21:12 by nodellao         ###   ########.fr       */
+/*   Updated: 2026/10/25 21:45:55 by nodellao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isprint(int c)
+int	ft_isprint(int c)
 {
 	if (c >= 32 && c <= 126)
 	{

@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nodellao <nodellao@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/25 23:13:07 by nodellao          #+#    #+#             */
+/*   Updated: 2026/10/26 14:08:50 by nodellao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-t_list *ft_lstlast(t_list *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
-    while (lst && lst->next)
-    {
-        lst = lst->next;
-    }
-    return lst;
+	while (lst->next)
+	{
+		lst = lst->next;
+	}
+	return (lst);
 }

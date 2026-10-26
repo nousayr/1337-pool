@@ -1,8 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nodellao <nodellao@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/26 11:12:39 by nodellao          #+#    #+#             */
+/*   Updated: 2026/10/26 11:13:16 by nodellao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-size_t ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-	size_t i = 0;
+	size_t	i;
+
+	i = 0;
 	while (s[i])
 	{
 		i++;
@@ -13,6 +27,7 @@ size_t ft_strlen(const char *s)
 // #include <string.h>
 // int main()
 // {
-// 	// printf("%zu", ft_strlen(NULL));
-// 	printf("%zu", strlen(NULL));
+// 	char n = '5';
+// 	printf("%zu", strlen(&n));
+// 	// printf("%zu", strlen(NULL));
 // }

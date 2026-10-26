@@ -6,7 +6,7 @@
 /*   By: nodellao <nodellao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/18 17:27:25 by nodellao          #+#    #+#             */
-/*   Updated: 2026/10/18 17:30:14 by nodellao         ###   ########.fr       */
+/*   Updated: 2026/10/26 12:15:22 by nodellao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 void	ft_free_all(char **str, int len)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (i < len)
@@ -120,9 +120,9 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	return (ft_fill(s, c, str));
 }
-#include <stdio.h>
-int main()
-{
-	char **str = ft_split("    hello   ahmad kif   rak   ", ' ');
-	printf("%s", str[2]);
-}
+// #include <stdio.h>
+// int main()
+// {
+// 	char **str = ft_split("    hello   ahmad kif   rak   ", ' ');
+// 	printf("%s", str[2]);
+// }

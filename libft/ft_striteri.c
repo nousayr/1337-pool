@@ -1,8 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nodellao <nodellao@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/25 23:50:21 by nodellao          #+#    #+#             */
+/*   Updated: 2026/10/25 23:50:49 by nodellao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t i = 0;
+	size_t	i;
+
+	i = 0;
 	if (!s || !f)
 		return ;
 	while (s[i])
@@ -10,14 +24,4 @@ void ft_striteri(char *s, void (*f)(unsigned int, char*))
 		f(i, s + i);
 		i++;
 	}
-}
-
-void ft(int n, char *str)
-{
-	return;
-}
-
-int main()
-{
-	ft_striteri("1337", ft);
 }
