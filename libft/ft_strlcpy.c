@@ -6,7 +6,7 @@
 /*   By: nodellao <nodellao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 11:11:42 by nodellao          #+#    #+#             */
-/*   Updated: 2026/10/26 11:12:01 by nodellao         ###   ########.fr       */
+/*   Updated: 2026/10/26 23:05:35 by nodellao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 			dst[i] = src[i];
 			i++;
 		}
+		dst[i] = '\0';
 	}
-	dst[i] = '\0';
 	return (ft_strlen(src));
 }

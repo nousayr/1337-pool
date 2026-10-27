@@ -6,7 +6,7 @@
 /*   By: nodellao <nodellao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 11:20:46 by nodellao          #+#    #+#             */
-/*   Updated: 2026/10/26 11:21:17 by nodellao         ###   ########.fr       */
+/*   Updated: 2026/10/27 00:24:27 by nodellao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	len;
+	size_t	len;
 
-	len = (int)ft_strlen(s);
-	while (len >= 0)
+	len = ft_strlen(s);
+	while (len > 0)
 	{
-		if (s[len] == c)
-		{
+		if (s[len] == (char)c)
 			return ((char *)s + len);
-		}
 		len--;
 	}
+	if (s[0] == (char)c)
+		return ((char *)s);
 	return (NULL);
 }

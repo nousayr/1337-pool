@@ -6,7 +6,7 @@
 /*   By: nodellao <nodellao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 20:59:53 by nodellao          #+#    #+#             */
-/*   Updated: 2026/10/25 21:01:00 by nodellao         ###   ########.fr       */
+/*   Updated: 2026/10/26 23:09:38 by nodellao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,8 @@ int	ft_atoi(const char *str)
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
-		{
 			sign *= -1;
-			i++;
-		}
+		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
