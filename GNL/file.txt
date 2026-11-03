@@ -1,0 +1,4 @@
+ncopiw fe lbafer 42
+nchikiw newline
+|-> lajbarnah ghanallociw star + static khaso yweli fih ghir xyata + ghanretorniw star
+|-> lamajbarnahx khas static ywli str_join + return dyal read tanya
