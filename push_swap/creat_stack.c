@@ -1,10 +1,9 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
 #include "push_swap.h"
 
 t_list	*ft_lstlast(t_list *lst)
 {
+	if (!lst)
+		return NULL;
 	while (lst->next)
 	{
 		lst = lst->next;
@@ -19,6 +18,7 @@ t_list	*ft_lstnew(void *content)
 	node = malloc(sizeof(t_list));
 	if (!node)
 		return (NULL);
+	node->index = 0;
 	node->content = content;
 	node->next = NULL;
     node->prev = NULL;
@@ -42,24 +42,13 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;
 	}
 }
-
-void ft_swap(char *a, char *b)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-    char tmp;
-    tmp = *a;
-    *a = *b;
-    *b = tmp;
-}
-
-int main(int ac, char **av)
-{
-    int i = 1;
-	t_list *a = NULL;
-	t_list *b = NULL;
-    while (av[i])
-    {
-        ft_lstadd_back(&a, ft_lstnew(av[i]));
-		i++;
-	}
-
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	new->prev = NULL;
+	if (*lst)
+		
+	*lst = new;
 }

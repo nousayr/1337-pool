@@ -1,77 +1,31 @@
 #include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
 #include "push_swap.h"
 
-int	ft_memcmp(const void *s1, const void *s2)
+int	ft_atoi(const char *str)
 {
-	size_t			i;
-	unsigned char	*str1;
-	unsigned char	*str2;
+	size_t		i;
+	int			sign;
+	long		val;
 
 	i = 0;
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	while (str1[i] && str2[i])
+	sign = 1;
+	val = 0;
+	while ((str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		if (*(str1 + i) != *(str2 + i))
-		{
-			return (*(str1 + i) - *(str2 + i));
-		}
+		if (str[i] == '-')
+			sign *= -1;
 		i++;
 	}
-	return (0);
-}
-
-t_list	*ft_lstlast(t_list *lst)
-{
-	if (!lst)
-		return NULL;
-	while (lst->next)
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		lst = lst->next;
+		val = (val * 10) + (str[i] - '0');
+		i++;
 	}
-	return (lst);
+	return (sign * (int)val);
 }
 
-t_list	*ft_lstnew(void *content)
-{
-	t_list	*node;
-
-	node = malloc(sizeof(t_list));
-	if (!node)
-		return (NULL);
-	node->content = content;
-	node->next = NULL;
-    node->prev = NULL;
-	return (node);
-}
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*node;
-
-	if (!lst || !new)
-		return ;
-	if (*lst)
-	{
-		node = ft_lstlast(*lst);
-		node->next = new;
-        new->prev = node;
-	}
-	else
-	{
-		*lst = new;
-	}
-}
-
-void ft_swap(char *a, char *b)
-{
-    char tmp;
-    tmp = *a;
-    *a = *b;
-    *b = tmp;
-}
 
 void *ft_min_element(t_list *a)
 {
@@ -80,13 +34,26 @@ void *ft_min_element(t_list *a)
 	str = a->content;
     while (a)
     {
-        if (ft_memcmp(str, a->content) > 0)
-        {
+        if (ft_atoi(str) > ft_atoi(a->content))
             str = a->content;
-        }
         a = a->next;
     }
     return str;
+}
+
+t_list *first_node(t_list **a)
+{
+	t_list *save;
+
+	if (!a || !(*a))
+		return NULL;
+	save = *a;
+	*a = (*a)->next;
+	if (*a)
+		(*a)->prev = NULL;
+	save->next = NULL;
+	save->prev = NULL;
+	return save;
 }
 
 void rotate_stack(t_list **a)
@@ -94,39 +61,103 @@ void rotate_stack(t_list **a)
 	t_list *last;
 	t_list *save;
 
-	save = *a;
+	if (!a || !(*a))
+		return ;
+	save = first_node(a);
 	last = ft_lstlast(*a);
-	*a = save->next;
-	(*a)->prev = NULL;
 	last->next = save;
 	save->prev = last;
 	save->next = NULL;
 }
 
-int main(int ac, char **av)
+void selectionsort(char **argv)
 {
     int i = 1;
 	t_list *a = NULL;
 	t_list *b = NULL;
-	void *save;
 	void *min;
-    while (av[i] != NULL)
+    while (argv[i])
     {
-        ft_lstadd_back(&a, ft_lstnew(av[i]));
+        ft_lstadd_back(&a, ft_lstnew(argv[i]));
 		i++;
 	}
-	save = a->content;
-	min = ft_min_element(a);
 	while (a)
 	{
-		while (ft_memcmp(save, min) != 0)
+		min = ft_min_element(a);
+		while (ft_atoi(min) != ft_atoi(a->content))
 		{
-			save = a->content;
 			rotate_stack(&a);
+			write(1, "ra\n", 3);
 		}
-		ft_lstadd_back(&b, a);
-		a = a->next;
-		a->prev = NULL;
+		ft_lstadd_front(&b, first_node(&a));
+		write(1, "pb\n", 3);
 	}
-	printf("%s", (char *)b->content);
+	while (b)
+	{
+		ft_lstadd_front(&a, first_node(&b));
+		write(1, "pa\n", 3);
+	}
+}
+
+void pased_index(t_list *a)
+{
+	t_list *save;
+	t_list *tmp;
+	
+	save = a;
+	while (a)
+	{
+		tmp = save;
+		while (tmp)
+		{
+			if (ft_atoi(a->content) > ft_atoi(tmp->content))
+			{
+				(a->index)++;
+			}
+			tmp = tmp->next;
+		}
+		a = a->next;
+	}
+	
+}
+
+void radixsort(char **argv)
+{
+    int i = 1;
+	t_list *a = NULL;
+	t_list *b = NULL;
+	t_list *save;
+	int n;
+
+	n = 2;
+    while (argv[i])
+    {
+        ft_lstadd_back(&a, ft_lstnew(argv[i]));
+		i++;
+	}
+	pased_index(a);
+	while (a)
+	{
+		save = a;
+		while (a)
+		{
+			if ((a->index % n) == 0)
+			{
+				ft_lstadd_front(&b, a);
+				save = save->next;
+			}
+			a = a->next;
+		}
+		a = save;
+		a = a->next;
+	}
+}
+
+int main(int ac, char **av)
+{
+	if (ac > 1)
+	{
+		radixsort(av);
+	}
+	return 0;
 }
