@@ -23,5 +23,6 @@ void rotate_stack(t_list **a);
 void selectionsort(char **argv);
 void pased_index(t_list *a);
 void radixsort(char **argv);
+int	ft_lstsize(t_list *lst);
 
 #endif

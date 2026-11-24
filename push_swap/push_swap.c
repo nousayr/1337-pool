@@ -26,6 +26,19 @@ int	ft_atoi(const char *str)
 	return (sign * (int)val);
 }
 
+void *ft_max_element(t_list *a)
+{
+	void *str;
+
+	str = a->content;
+    while (a)
+    {
+        if (ft_atoi(str) < ft_atoi(a->content))
+            str = a->content;
+        a = a->next;
+    }
+    return str;
+}
 
 void *ft_min_element(t_list *a)
 {
@@ -61,7 +74,7 @@ void rotate_stack(t_list **a)
 	t_list *last;
 	t_list *save;
 
-	if (!a || !(*a))
+	if (!a || !(*a) || !(*a)->next)
 		return ;
 	save = first_node(a);
 	last = ft_lstlast(*a);
@@ -118,7 +131,27 @@ void pased_index(t_list *a)
 		}
 		a = a->next;
 	}
-	
+}
+
+size_t max_lops(t_list *a)
+{
+	size_t n;
+	size_t len;
+
+	n = a->index;
+	len = 0;
+	while (a)
+	{
+		if (n < a->index)
+			n = a->index;
+		a = a->next;
+	}
+	while (n > 0)
+	{
+		len++;
+		n /= 2;
+	}
+	return len;
 }
 
 void radixsort(char **argv)
@@ -126,30 +159,43 @@ void radixsort(char **argv)
     int i = 1;
 	t_list *a = NULL;
 	t_list *b = NULL;
-	t_list *save;
-	int n;
+	int len;
+	size_t max;
+	int bit;
 
-	n = 2;
+	bit = 0;
     while (argv[i])
     {
         ft_lstadd_back(&a, ft_lstnew(argv[i]));
 		i++;
 	}
 	pased_index(a);
-	while (a)
+	max = max_lops(a);
+	while (max > 0)
 	{
-		save = a;
-		while (a)
+		len = ft_lstsize(a);
+		while (len > 0)
 		{
-			if ((a->index % n) == 0)
+			if (((a->index >> bit) & 1) == 0)
 			{
-				ft_lstadd_front(&b, a);
-				save = save->next;
+				ft_lstadd_front(&b, first_node(&a));
+				write(1, "pb\n", 3);
 			}
-			a = a->next;
+			else
+			{
+				rotate_stack(&a);
+				write(1, "ra\n", 3);
+			}
+			len--;
 		}
-		a = save;
-		a = a->next;
+		while (b)
+		{
+			ft_lstadd_front(&a, first_node(&b));
+			write(1, "pa\n", 3);
+		}
+		
+		bit++;
+		max--;
 	}
 }
 
@@ -157,7 +203,7 @@ int main(int ac, char **av)
 {
 	if (ac > 1)
 	{
-		radixsort(av);
+		selectionsort(av);
 	}
 	return 0;
 }

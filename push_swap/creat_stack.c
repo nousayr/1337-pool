@@ -49,6 +49,21 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	new->next = *lst;
 	new->prev = NULL;
 	if (*lst)
-		
+	{
+		(*lst)->prev = NULL;
+	}
 	*lst = new;
+}
+
+int	ft_lstsize(t_list *lst)
+{
+	int	len;
+
+	len = 0;
+	while (lst)
+	{
+		len++;
+		lst = lst->next;
+	}
+	return (len);
 }
